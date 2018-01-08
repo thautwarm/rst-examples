@@ -27,6 +27,7 @@ wheels/
 .installed.cfg
 *.egg
 
+_build/**/*.png
 **/*.js
 **/*.css
 **/*.html
