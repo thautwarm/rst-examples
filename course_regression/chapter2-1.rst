@@ -203,18 +203,273 @@ n个独立样本的最大似然
 
 验证三种检验的关系:
     
-    - t检验和卡方检验
+    - t检验和回归系数检验
 
     .. math ::
 
-        t = \frac {\hat \beta_1 \sqrt L_{xx}} {\hat \sigma} = \frac {\sqrt {n-2} r} {\sqrt {1 - r^2}}
+        t = \frac {
+                \hat \beta_1 \sqrt L_{xx}
+            } 
+            {
+                \hat \sigma
+            } 
+          = \frac {
+                \sqrt {n-2} r
+            } 
+            {
+                \sqrt {
+                    1 - r^2
+                }
+            }
 
+    证:
+    
+    已知
+
+    .. math ::
+
+        & SSR = {\hat \beta_1}^2 L_{xx} \\
+      
+        & r = \frac {
+                L_{xy}
+            } 
+            {   
+                \sqrt{
+                    L_{xx} L_{yy}
+                }
+            } \\ 
+
+        & {\hat \beta_1} = 
+                    \frac {
+                        L_{xy}
+                    }  
+                    {
+                        L_{xx}
+                    } \\
+
+        & SSR/SST = \frac {
+                            L_{xy}^2/L_{xx}
+                    } 
+                    {
+                        L_{yy}
+                    } = r^2
+    
+    则
+
+    .. math ::
+
+
+      & \frac {
+            \sqrt {n-2} r
+        } 
+        {   
+            \sqrt {1 - r^2}
+        }\\
+          
+        & = \frac{
+                \sqrt{
+                    \frac {
+                        (n-2)SSR
+                    } 
+                    {
+                        SST
+                    }
+                } 
+            }
+            {
+                \sqrt {
+                    1 - \frac {SSR} {SST}
+                }
+            } \\
+        & = \sqrt { 
+                    \frac {
+                        SSR
+                    }
+                    {
+                        SSE/(n-2)
+                    }
+            }\\
+        & =  \frac {
+                {\hat \beta_1} \sqrt L_{xx}
+            }
+            {
+                \hat \sigma
+            } = t
+
+    其中
 
     - F检验和t检验
+
+    .. math ::
+
+        F = \frac {SSR / 1} {SSE/ (n-2)} =  \frac{\beta_1^2 \cdot L_{xx}} {\sigma^2} = t^2
+    
+    证明:
+
+    在上述证明t检验和相关系数r关系的步骤中，已有
+    
+    .. math ::
+
+        t = \sqrt {
+            \frac {
+                SSR
+            }
+            {
+                SSE/(n-2)
+            }
+        } = \sqrt F
+
+    则非常显然
+
+    .. math ::
+        
+        F = t^2
+
+
     
 
+* 2.9
+
+验证
+
+.. math ::
+
+    var(e_i) = [1 
+                - \frac {1} {n} 
+                - \frac {
+                    (x_i - \overline x)^2
+                  } {  L_{xx}  } 
+                ] \sigma^2
+    
+证:
+
+.. math ::
+
+    & var(e_i) = var(y_i - \hat y_i) \\
+    
+    & = var(y_i) + var(\hat \beta_1 x_i + \hat \beta_0) 
+        - 2 cov(y_i, \hat y_i)\\
+
+    & = \sigma^2 
+        + (\frac {x_i^2 + {\overline x}^2} {L_{xx}} 
+            + \frac {1}{n}
+            )  \sigma^2 + 2 x_i cov(\beta_1, \beta_0)
+        - 2 cov(y_i,  \hat y_i)\\
+
+    & = \sigma^2 
+        + (\frac {x_i^2 + {\overline x}^2} {L_{xx}} 
+            + \frac {1}{n}
+            ) - \frac  {2 x_i \overline x} {L_{xx}} \sigma^2
+        - 2 cov(y_i,  \hat y_i) \\
+
+    & = [1 +  (\frac {x_i^2 + {\overline x}^2 - {2 x_i \overline x}} {L_{xx}} 
+            + \frac {1}{n}
+            )] \sigma ^2
+        - 2 cov(y_i,  \hat y_i)
+
+又
+
+.. math ::
+
+    & \hat y_i = \hat \beta_1 x_i + \hat \beta_0 = \hat \beta_1 (x_i  - \overline x)+ \overline y \\
+
+    & \hat \beta_1 = \sum_ij
+                    \frac {
+                        x_j - \overline x
+                    }
+                    {
+                        L_{xx}
+                    } y_j
+
+    & \Rightarrow
+       \hat y_i =
+        (x_i  - \overline x) \sum_j
+                    \frac {
+                        x_j - \overline x
+                    }
+                    {
+                        L_{xx}
+                    } y_i
+        + \overline y \\
+    
+    & \Rightarrow
+        cov(y_i, \hat y_i)
+            =
+            (\frac {
+                (x_i - \overline x)^2
+            }
+            {
+                L_{xx}
+            } + \frac {1} {n}) \sigma^2
+         
+    
+整合得结果
+
+* 2.10
+
+证明 :math:`\hat \sigma^2 = \frac{1}{n-2}L_{yy}` 是 :math:`\sigma^2` 的无偏估计。
+
+证:
+
+由2.9得
+
+.. math ::
+
+    \sum_i var(e_i) = (n-2) \sigma^2
+
+证毕
+
+* 2.11
+
+证明 :math:`r^2=\frac{F}{F+n-2}`
+
+.. math ::
+
+    & F = \frac {SSR}{SST/n-2} \\
+
+    & \Rightarrow 
+    \frac{F}{F+n-2}
+    = 
+    \frac{
+        \frac {(n-2)SSR}{SSE} 
+    }
+    {
+        \frac {(n-2)SSR + (n-2)SSE}{SSE} 
+    }\\
+
+    & = SSR/SSR+SSE = SSR/SST = r^2
+
+* 2.12
+
+如果把自变量观测值都乘以2, 回归参数的最小二乘法估计 :math:`\beta_0,\beta_1` 会发生什么变化?  
+
+如果是加上2呢?
+
+解
 
 
+
+
+
+
+            
+
+        
+     
+
+
+
+
+            
+    
+                
+
+
+
+
+
+
+            
 
 
     
