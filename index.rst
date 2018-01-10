@@ -11,6 +11,7 @@ Welcome to rst examples's documentation!
    :caption: Contents:
 
    course_regression/chapter2-1.rst
+   course_regression/chapter3-1.rst
 
 
 
