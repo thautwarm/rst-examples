@@ -42,7 +42,7 @@ Chapter 2
 
 * 2.3
 
-证明满足求解条件的 :math:`\sum_{i=0}^n e_i = 0, \sum_{i=0}^n x_i e_i = 0`.
+证明满足求解条件的 :math:`\sum_{i=0}^n e_i = 0, \sum_{i=0}^n x_i e_i = 0` .
 
 证:
 
@@ -64,9 +64,9 @@ Chapter 2
 
 注意到最小二乘法求解要求上式为0， 证毕。
 
-* 2.3
+* 2.4
 
-回归方程 :math: `E(y) = \beta_0 + \beta_1 x`的参数 :math:`\beta_0, \beta_1`的最小二乘估计与最大似然估计在什么条件下等价?
+回归方程 :math:`E(y) = \beta_0 + \beta_1 x` 的参数 :math:`\beta_0, \beta_1` 的最小二乘估计与最大似然估计在什么条件下等价?
 
 解与证明:
 
@@ -74,7 +74,7 @@ Chapter 2
 
 .. math ::
 
-    y_i ~ N(\beta_0 + \beta_1 x_i, \sigma^2)
+    y_i \sim N(\beta_0 + \beta_1 x_i, \sigma^2)
 
 对应概率密度函数为    
 
@@ -82,7 +82,7 @@ Chapter 2
 
     f(y_i; \theta) = \frac  1 {\sqrt{2 \pi} \sigma} exp \{ -\frac 1 {2\sigma^2} [ y_i - (\beta_0 + \beta_1 x_i) ]^2 \}
 
-其中 :math:`\theta` 蕴含 :math:`\beta_0, \beta_1`。
+其中 :math:`\theta` 蕴含 :math:`\beta_0, \beta_1` 。
 
 n个独立样本的最大似然
 
@@ -448,6 +448,8 @@ n个独立样本的最大似然
 
 解:
 
+由 :math:`\hat \beta_1, \hat \beta2` 导出式导出即可。
+
 - 乘2
     
     :math:`\hat \beta_1` 减半  , :math:`\hat \beta_0` 不变。
@@ -465,8 +467,7 @@ n个独立样本的最大似然
 
     - 首先，线性回归的求解是软优化(最小二乘法)或概率优化(最大概然)问题，不能得到确定性的结果。
 
-    - 其次相关系数 :math:`r \Rightarrow  r^2 = SSR/(SSE + SSR)` , 可见相关系数不仅依赖于误差表征 :math:`SSR` ,
-    还和样本数据本身的分布情况有关。
+    - 其次相关系数 :math:`r \Rightarrow  r^2 = SSR/(SSE + SSR)` , 可见相关系数不仅依赖于误差表征 :math:`SSR` ,还和样本数据本身的分布情况有关。
 
 
 
