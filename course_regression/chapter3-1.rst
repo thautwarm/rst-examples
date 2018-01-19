@@ -11,29 +11,22 @@ Chapter 3
 
 写出多元线性回归模型的矩阵形式，并给出多元线性回归模型的基本假设。
 
-一元线性回归模型有哪些基本假定?
+矩阵形式:
 
-    - 1. 高斯马尔科夫条件.
-     
-        随机误差项平均值为0，随机误差协方差为0或某定值。
+.. math ::
 
-        考察线性相关性:
+    \bold X \bold A + \bold \epsilon = \bold Y 
 
-        when :math:`i = j`
 
-            cov(:math:`\epsilon_i, \epsilon_j`) = :math:`\sigma^2` 
-        
-        otherwise 
-        
-            cov(:math:`\epsilon_i, \epsilon_j`) = 0 
+多元线性回归模型有哪些基本假定?
+
+    - 1. 高斯-马尔科夫条件。
     
-    - 2 正态条件
+    - 2. 自变量为常数。
 
-    .. math ::
+    - 3. 正态分布。
 
-        & \epsilon_i \sim N(0, \sigma^2) \\
-
-        & \epsilon_1, \epsilon_2, \cdots  \text{  mutual independent}
+    - 4. 回归参数个数小于方程个数。
 
 * 3.2
 
@@ -58,6 +51,8 @@ Chapter 3
     & = (\bold I - \bold H) cov(y, y) (\bold I - \bold H)^T \\
 
 由 :math:`\bold H` 是对称幂等阵
+
+.. math ::
 
     \Rightarrow D(\bold e) = \sigma^2 (\bold I - \bold H)
 
