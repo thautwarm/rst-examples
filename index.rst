@@ -12,10 +12,10 @@ Welcome to rst examples's documentation!
 
    course_regression/chapter2-1.rst
    course_regression/chapter3-1.rst
-   course_regression/world-happiness.rst
-   course_regression/2F.rst
-   course_regression/3F.rst
-
+   
+   intro/criterion.rst
+   intro/position_specific.rst
+   intro/physicochemical.rst
 
 
 
